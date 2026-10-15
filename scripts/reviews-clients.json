@@ -1,0 +1,18 @@
+{
+  "defaultSlug": "acme-roofing",
+  "clients": [
+    {
+      "slug": "acme-roofing",
+      "name": "Acme Roofing",
+      "cid": "1",
+      "location_code": 2840,
+      "language_code": "en",
+      "depth": 20,
+      "sort_by": "newest",
+      "profileUrl": "",
+      "outputJson": "src/data/google-reviews.json",
+      "outputAvatarsDir": "src/assets/avatars",
+      "outputReviewImagesDir": "src/assets/review-images"
+    }
+  ]
+}
