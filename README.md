@@ -22,7 +22,7 @@ npm run new-client -- \
   --cid ""
 ```
 
-`--trade` is `roofing`, `painting`, or `hvac`. Omit flags in a terminal and the script will prompt. It writes:
+`--trade` is `roofing`, `painting`, `hvac`, or `concrete`. Omit flags in a terminal and the script will prompt. It writes:
 
 - `src/content/client.json` from the pack (identity, URLs, branding, map, reviews shell, SEO, copy, form, nav, service areas, primary service slugs)
 - `wrangler.toml` (`PUBLIC_R2_SITE_SLUG`, `SITE_URL`)
@@ -39,7 +39,7 @@ The homepage before/after block reads `copy.beforeAfter` and stays hidden while 
 ## Checklist
 
 1. `npm run new-client` with the real name, slug, trade, city, phone, email, and site URL.
-2. Confirm `client.json` identity, palette, and `schemaType` (`RoofingContractor`, `HousePainter`, or `HVACBusiness`).
+2. Confirm `client.json` identity, palette, and `schemaType` (`RoofingContractor`, `HousePainter`, `HVACBusiness`, or `GeneralContractor`). Concrete uses `GeneralContractor` because schema.org has no concrete-contractor type. `HomeAndConstructionBusiness` stays the layout's `additionalType` for every trade. On a concrete client, set `copy.practice.slabThickness`, `copy.practice.baseMaterial`, and `copy.practice.yearsExperience` (leave years blank to hide that line). Those three lines render on the about page.
 3. Set `PUBLIC_R2_PUBLIC_BASE_URL`, `PUBLIC_R2_SITE_SLUG`, and `SITE_URL` in `.env` and in the Pages project. `npm run build` reads `SITE_URL` for the sitemap.
 4. Decimal Google CID in `scripts/reviews-clients.json` (string). `https://www.google.com/maps?cid=THAT_NUMBER` must open the same listing. Do not convert a Maps `!1s0x…:0x…` feature id.
 5. `npm run sync-reviews` when DataForSEO credentials exist. Preview builds set `SKIP_SYNC_REVIEWS=1`.

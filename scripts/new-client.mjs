@@ -13,7 +13,7 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
-const TRADES = ["roofing", "painting", "hvac"];
+const TRADES = ["roofing", "painting", "hvac", "concrete"];
 
 function parseArgs(argv) {
   const out = {};

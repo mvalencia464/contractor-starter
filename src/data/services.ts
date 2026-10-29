@@ -4,6 +4,7 @@ import { fillTemplate } from "../lib/template";
 import roofingServices from "../content/packs/roofing/services.json";
 import paintingServices from "../content/packs/painting/services.json";
 import hvacServices from "../content/packs/hvac/services.json";
+import concreteServices from "../content/packs/concrete/services.json";
 
 export type SiteService = {
   slug: string;
@@ -40,6 +41,7 @@ const PACKS: Record<string, PackService[]> = {
   roofing: roofingServices as PackService[],
   painting: paintingServices as PackService[],
   hvac: hvacServices as PackService[],
+  concrete: concreteServices as PackService[],
 };
 
 const pack = PACKS[client.identity.trade];
