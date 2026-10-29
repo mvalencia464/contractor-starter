@@ -12,6 +12,20 @@ export type { SiteService } from "../data/services";
 const copy = client.copy;
 const images = client.branding.images;
 
+function practiceLines(source: {
+  practice?: {
+    slabThickness?: string;
+    baseMaterial?: string;
+    yearsExperience?: string;
+  };
+}): string[] {
+  const practice = source.practice;
+  if (!practice) return [];
+  return [practice.slabThickness, practice.baseMaterial, practice.yearsExperience]
+    .map((line) => (typeof line === "string" ? line.trim() : ""))
+    .filter((line) => line.length > 0);
+}
+
 export const COMPANY_IMAGES = JOBS.map((job) => ({
   slug: job.slug,
   title: job.title,
@@ -147,8 +161,12 @@ export const SITE = {
     ctaHref: copy.ownerStory.ctaHref,
     quoteAttribution: copy.ownerStory.quoteAttribution,
     quoteRole: copy.ownerStory.quoteRole,
-    homepageParagraphLimit: copy.ownerStory.homepageParagraphLimit,
-    paragraphs: copy.ownerStory.paragraphs.map((text) => ({ parts: [{ text }] })),
+    homepageParagraphLimit:
+      copy.ownerStory.homepageParagraphLimit + practiceLines(copy).length,
+    paragraphs: [
+      ...copy.ownerStory.paragraphs,
+      ...practiceLines(copy),
+    ].map((text) => ({ parts: [{ text }] })),
   },
 
   teamSection: copy.teamSection,
